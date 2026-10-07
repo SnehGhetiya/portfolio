@@ -19,7 +19,6 @@
     "public",
     "characters",
     "next-env.d.ts",
-    "components/ui",
-    "lib/notification-pop.ts"
+    "components/ui"
   ]
 }

@@ -1,3 +1,4 @@
+import type { Period } from "@/types/types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -5,13 +6,13 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatPeriod(period: { start: string; end?: string }) {
+export function formatPeriod(period: Period) {
   if (!period.end) return `${period.start} — Present`;
   if (period.start === period.end) return period.start;
   return `${period.start} — ${period.end}`;
 }
 
-export function formatDuration(period: { start: string; end?: string }) {
+export function formatDuration(period: Period) {
   const start = new Date(period.start);
   const end = period.end ? new Date(period.end) : new Date();
 

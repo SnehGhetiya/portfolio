@@ -12,8 +12,6 @@
     "characters",
     "bun.lock",
     "next-env.d.ts",
-    "components/ui",
-    "lib/*-click.ts",
-    "lib/notification-pop.ts"
+    "components/ui"
   ]
 }
