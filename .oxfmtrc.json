@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "useTabs": false,
+  "tabWidth": 2,
+  "singleQuote": false,
+  "ignorePatterns": [
+    ".next",
+    ".claude",
+    ".scratch",
+    "node_modules",
+    "public",
+    "characters",
+    "bun.lock",
+    "next-env.d.ts",
+    "components/ui",
+    "lib/*-click.ts",
+    "lib/notification-pop.ts"
+  ]
+}

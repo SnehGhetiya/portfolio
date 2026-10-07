@@ -1,0 +1,25 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "react", "nextjs", "jsx-a11y", "import"],
+  "categories": {
+    "correctness": "error"
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "jsx-a11y/control-has-associated-label": "off"
+  },
+  "env": {
+    "builtin": true,
+    "browser": true
+  },
+  "ignorePatterns": [
+    ".next",
+    ".claude",
+    "node_modules",
+    "public",
+    "characters",
+    "next-env.d.ts",
+    "components/ui",
+    "lib/notification-pop.ts"
+  ]
+}

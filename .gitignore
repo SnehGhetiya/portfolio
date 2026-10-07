@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local-only source art and personal reference photo (not needed to build or run)
+/characters/
+
+# Third-party agent skills (reinstallable with `npx skills add`)
+/.claude/skills/
