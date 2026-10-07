@@ -14,6 +14,9 @@ if (key) {
     persistence: "memory",
     person_profiles: "identified_only",
     capture_exceptions: true,
+    // By default PostHog injects its lazy scripts before the first <body> script, which is the
+    // JSON-LD tag React is hydrating, causing a hydration mismatch. <head> avoids that.
+    external_scripts_inject_target: "head",
   });
 }
 
