@@ -1,10 +1,13 @@
-import { op } from "./openpanel";
+import posthog from "posthog-js";
 
-export type Event = {
-  name: "play_name_pronunciation";
-  properties?: Record<string, string | number | boolean | null>;
-};
+export type DelegatedEventName = "project_click" | "social_click";
 
-export function trackEvent({ name, properties }: Event) {
-  op?.track(name, properties);
+export type Event =
+  | { name: "play_name_pronunciation" }
+  | { name: DelegatedEventName; properties: { label: string } };
+
+export function trackEvent({ name, ...rest }: Event) {
+  // Not initialised when there is no key (local dev, previews).
+  if (!posthog.__loaded) return;
+  posthog.capture(name, "properties" in rest ? rest.properties : undefined);
 }
