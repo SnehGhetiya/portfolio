@@ -1,6 +1,6 @@
 "use client";
 
-import { BorderPet } from "@/components/web/border-pet";
+import { SectionHeading } from "@/components/web/section-heading";
 import { ChevronDownIcon, CodeXmlIcon } from "lucide-react";
 import { useState } from "react";
 import { Tag } from "@/components/ui/tag";
@@ -14,17 +14,13 @@ import { FullWidthDivider } from "./full-width-divider";
 export function ExperienceSection() {
   return (
     <section id="experience" className="scroll-mt-14">
-      <h2 className="py-6 text-center font-medium text-lg text-muted-foreground tracking-tight md:text-xl">
-        Work <span className="text-foreground">Experience</span>
-      </h2>
+      <SectionHeading lead="Work" emphasis="Experience" pet="shtam" side="left" />
 
       <div className="relative *:border-0">
         <DecorIcon className="size-4" position="top-left" />
         <DecorIcon className="size-4" position="top-right" />
         <DecorIcon className="size-4" position="bottom-left" />
         <DecorIcon className="size-4" position="bottom-right" />
-
-        <BorderPet pet="shtam" side="left" />
         <FullWidthDivider className="-top-px" />
 
         <div className="mx-auto w-full max-w-3xl divide-y divide-border px-4 md:px-6 py-12">

@@ -1,4 +1,4 @@
-import { BorderPet } from "@/components/web/border-pet";
+import { SectionHeading } from "@/components/web/section-heading";
 import { ArrowUpRightIcon, FolderGit2Icon } from "lucide-react";
 import { PROJECTS } from "@/data/projects";
 import { cn, formatPeriod } from "@/lib/utils";
@@ -9,17 +9,13 @@ import { FullWidthDivider } from "./full-width-divider";
 export function ProjectSection() {
   return (
     <section id="projects" className="scroll-mt-14">
-      <h2 className="py-6 text-center font-medium text-lg text-muted-foreground tracking-tight md:text-xl">
-        Featured <span className="text-foreground">Work</span>
-      </h2>
+      <SectionHeading lead="Featured" emphasis="Work" pet="ashu" side="right" />
 
       <div className="relative *:border-0">
         <DecorIcon className="size-4" position="top-left" />
         <DecorIcon className="size-4" position="top-right" />
         <DecorIcon className="size-4" position="bottom-left" />
         <DecorIcon className="size-4" position="bottom-right" />
-
-        <BorderPet pet="ashu" side="right" />
         <FullWidthDivider className="-top-px" />
 
         <div className="mx-auto w-full max-w-3xl px-4 py-12 md:px-6 md:py-16">
@@ -93,7 +89,14 @@ function ProjectCard({
 
   if (project.href) {
     return (
-      <a className={cardClassName} href={project.href} rel="noopener noreferrer" target="_blank">
+      <a
+        className={cardClassName}
+        href={project.href}
+        rel="noopener noreferrer"
+        target="_blank"
+        data-track-event="project_click"
+        data-track-label={project.title}
+      >
         {content}
       </a>
     );

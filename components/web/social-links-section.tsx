@@ -1,4 +1,4 @@
-import { BorderPet } from "@/components/web/border-pet";
+import { SectionHeading } from "@/components/web/section-heading";
 import { MailIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SOCIAL_LINKS } from "@/data/social-links";
@@ -16,17 +16,13 @@ const SOCIAL_ICONS: Record<SocialLinkName, React.ReactNode> = {
 export function SocialLinksSection() {
   return (
     <section id="social" className="relative scroll-mt-14">
-      <h2 className="py-6 text-center font-medium text-lg text-muted-foreground tracking-tight md:text-xl">
-        Let&apos;s <span className="text-foreground">Connect</span>
-      </h2>
+      <SectionHeading lead="Let's" emphasis="Connect" pet="binbuddy" side="left" />
 
       <div className="relative *:border-0">
         <DecorIcon className="size-4" position="top-left" />
         <DecorIcon className="size-4" position="top-right" />
         <DecorIcon className="size-4" position="bottom-left" />
         <DecorIcon className="size-4" position="bottom-right" />
-
-        <BorderPet pet="binbuddy" side="left" />
         <FullWidthDivider className="-top-px" />
 
         <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-4 px-4 py-10 md:px-6 md:py-12">
@@ -41,6 +37,8 @@ export function SocialLinksSection() {
                       href={item.href}
                       target={item.name === "email" ? undefined : "_blank"}
                       rel="noopener noreferrer"
+                      data-track-event="social_click"
+                      data-track-label={item.name}
                     />
                   }
                   nativeButton={false}

@@ -32,7 +32,7 @@ type BorderPetProps = {
 };
 
 /**
- * A Petdex pet sitting on the top border of the nearest `relative` ancestor.
+ * A Petdex pet sitting on the bottom edge of its positioned ancestor (see SectionHeading).
  * It idles in the seated pose, waves on hover and jumps when clicked.
  */
 export function BorderPet({ pet, side = "right", scale = 0.36, className }: BorderPetProps) {
@@ -80,8 +80,10 @@ export function BorderPet({ pet, side = "right", scale = 0.36, className }: Bord
       onMouseEnter={() => state === "sit" && play("wave")}
       onClick={() => play("jump")}
       className={cn(
-        "absolute top-0 z-1 -translate-y-full cursor-pointer select-none",
-        side === "right" ? "right-6 md:right-10" : "left-6 md:left-10",
+        "absolute bottom-0 z-1 cursor-pointer select-none",
+        side === "right"
+          ? "left-full ml-3 md:right-10 md:left-auto md:ml-0"
+          : "right-full mr-3 md:right-auto md:left-10 md:mr-0",
         className,
       )}
       style={{ width: FRAME_W * scale, height: FRAME_H * scale }}
