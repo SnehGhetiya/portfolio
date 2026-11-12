@@ -30,6 +30,7 @@ export type Project = {
   href?: string;
   period: Period;
   description: string;
+  highlights?: string[];
   skills: string[];
 };
 

@@ -67,6 +67,14 @@ function ProjectCard({
         </div>
 
         <p className="text-xs leading-relaxed text-muted-foreground">{project.description}</p>
+
+        {project.highlights && project.highlights.length > 0 && (
+          <ul className="list-disc space-y-1.5 pl-4 text-xs leading-relaxed text-muted-foreground marker:text-muted-foreground/50">
+            {project.highlights.map((highlight) => (
+              <li key={highlight}>{highlight}</li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div className="flex shrink-0 flex-col items-start gap-3 md:w-56 md:items-end md:text-right">
