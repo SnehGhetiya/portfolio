@@ -1,5 +1,6 @@
-import { ArrowRightIcon, FileDownIcon } from "lucide-react";
+import { FileDownIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BookCallButton } from "@/components/web/book-call-button";
 import { SnehMascot } from "@/components/web/sneh-mascot";
 import { EXPERIENCE } from "@/data/experience";
 import { RESUME_HREF } from "@/data/resume";
@@ -59,10 +60,7 @@ export function HeroSection() {
             </p>
 
             <div className="fade-in slide-in-from-bottom-4 flex animate-in flex-wrap items-center justify-center gap-2 fill-mode-backwards delay-400 duration-500 ease-out lg:justify-start">
-              <Button render={<a href="#social" />} nativeButton={false}>
-                Get in touch
-                <ArrowRightIcon aria-hidden data-icon="inline-end" />
-              </Button>
+              <BookCallButton source="hero" />
               <Button
                 variant="outline"
                 render={

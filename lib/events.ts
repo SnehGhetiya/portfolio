@@ -6,6 +6,8 @@ export type Event =
   | { name: "play_name_pronunciation" }
   | { name: "copy_email" }
   | { name: "command_menu_open" }
+  | { name: "booking_open"; properties: { label: string } }
+  | { name: "call_booked" }
   | { name: "theme_change"; properties: { theme: "light" | "dark" } }
   | { name: DelegatedEventName; properties: { label: string } };
 
