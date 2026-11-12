@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { useInView, usePageInView } from "motion/react";
+import { useInView, usePageInView, useReducedMotion } from "motion/react";
 import { TextFlip } from "@/components/web/text-flip";
 
 export function FlipSentences({
@@ -13,13 +13,15 @@ export function FlipSentences({
   const ref = useRef<HTMLDivElement>(null);
   const isPageInView = usePageInView();
   const isInView = useInView(ref);
+  // Stays on the first sentence for visitors who prefer reduced motion.
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <div ref={ref} {...props}>
       <TextFlip
         className="shimmer font-mono text-sm text-balance text-muted-foreground shimmer-duration-1500 shimmer-once not-dark:shimmer-color-foreground"
         interval={3}
-        play={isPageInView && isInView}
+        play={isPageInView && isInView && !prefersReducedMotion}
       >
         {children}
       </TextFlip>

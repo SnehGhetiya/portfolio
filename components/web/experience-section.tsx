@@ -37,6 +37,7 @@ export function ExperienceSection() {
 
 function ExperienceItem({ experience }: { experience: Experience }) {
   const [open, setOpen] = useState(Boolean(experience.isCurrent));
+  const detailsId = `${experience.id}-details`;
 
   return (
     <div className="py-6">
@@ -54,6 +55,7 @@ function ExperienceItem({ experience }: { experience: Experience }) {
       </div>
 
       <button
+        aria-controls={detailsId}
         aria-expanded={open}
         className="mt-3 flex w-full items-start gap-2.5 text-left"
         onClick={() => setOpen((value) => !value)}
@@ -80,23 +82,23 @@ function ExperienceItem({ experience }: { experience: Experience }) {
         </span>
       </button>
 
-      {open && (
-        <div className="mt-3 pl-[34px]">
-          <div className="space-y-3 text-sm leading-relaxed text-foreground/90">
-            {experience.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-
-          <ul className="mt-3 flex flex-wrap gap-1.5">
-            {experience.skills.map((skill) => (
-              <li key={skill} className="flex">
-                <Tag>{skill}</Tag>
-              </li>
-            ))}
-          </ul>
+      {/* Collapsed with `hidden` rather than unmounted, so the text stays in the HTML for search
+          engines and in-page find. */}
+      <div className="mt-3 pl-[34px]" hidden={!open} id={detailsId}>
+        <div className="space-y-3 text-sm leading-relaxed text-foreground/90">
+          {experience.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
-      )}
+
+        <ul className="mt-3 flex flex-wrap gap-1.5">
+          {experience.skills.map((skill) => (
+            <li key={skill} className="flex">
+              <Tag>{skill}</Tag>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

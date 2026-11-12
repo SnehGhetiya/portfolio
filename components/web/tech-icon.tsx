@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { CodeXmlIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 /**
  * Logo asset per tech-stack key, under /public/assets. Keys without an entry
@@ -31,6 +32,12 @@ const TECH_LOGOS: Record<string, string> = {
   git: "/assets/git.svg",
 };
 
+/**
+ * Logos drawn in black or near-black, which disappear on the dark background. Only these are
+ * turned white in dark mode; the rest keep their brand colours.
+ */
+const DARK_LOGOS = new Set(["go", "nextjs", "expressjs", "mongodb", "aws", "shadcn-ui"]);
+
 export function TechIcon({ techKey }: { techKey: string }) {
   const src = TECH_LOGOS[techKey];
 
@@ -39,7 +46,10 @@ export function TechIcon({ techKey }: { techKey: string }) {
       <Image
         alt=""
         aria-hidden
-        className="size-3.5 shrink-0 dark:brightness-0 dark:invert"
+        className={cn(
+          "size-3.5 shrink-0",
+          DARK_LOGOS.has(techKey) && "dark:brightness-0 dark:invert",
+        )}
         height={14}
         width={14}
         src={src}

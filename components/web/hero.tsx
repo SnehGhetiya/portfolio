@@ -1,10 +1,21 @@
+import { ArrowRightIcon, FileDownIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { SnehMascot } from "@/components/web/sneh-mascot";
+import { EXPERIENCE } from "@/data/experience";
+import { RESUME_HREF } from "@/data/resume";
 import { USER } from "@/data/user";
 import { cn } from "@/lib/utils";
 import { DecorIcon } from "./decor-icon";
 import { FlipSentences } from "./flip-sentence";
 import { PronounceMyName } from "./pronounce-my-name";
 import { FullWidthDivider } from "./full-width-divider";
+
+/** Whole years since the first role started; the page is static, so this updates on each deploy. */
+function yearsOfExperience() {
+  const first = EXPERIENCE.at(-1)!;
+  const ms = Date.now() - new Date(first.period.start).getTime();
+  return Math.floor(ms / (365.25 * 24 * 60 * 60 * 1000));
+}
 
 export function HeroSection() {
   return (
@@ -38,10 +49,45 @@ export function HeroSection() {
             <FlipSentences className="h-12.5 py-1 pl-4 sm:h-9 lg:pl-0">
               {USER.flipSentences}
             </FlipSentences>
+
+            <p className="fade-in slide-in-from-bottom-4 max-w-md animate-in fill-mode-backwards text-center text-sm leading-relaxed text-muted-foreground delay-300 duration-500 ease-out text-pretty lg:text-left">
+              I build fast, scalable web products with React, Next.js and Node.js, with{" "}
+              {yearsOfExperience()}+ years across enterprise SaaS, B2B commerce and healthcare.
+              Currently a Senior Software Engineer at{" "}
+              <span className="text-foreground">{EXPERIENCE[0].company}</span>, modernizing the
+              IDHub identity governance platform.
+            </p>
+
+            <div className="fade-in slide-in-from-bottom-4 flex animate-in flex-wrap items-center justify-center gap-2 fill-mode-backwards delay-400 duration-500 ease-out lg:justify-start">
+              <Button render={<a href="#social" />} nativeButton={false}>
+                Get in touch
+                <ArrowRightIcon aria-hidden data-icon="inline-end" />
+              </Button>
+              <Button
+                variant="outline"
+                render={
+                  <a
+                    href={RESUME_HREF}
+                    download
+                    data-track-event="resume_download"
+                    data-track-label="hero"
+                  />
+                }
+                nativeButton={false}
+              >
+                <FileDownIcon aria-hidden data-icon="inline-start" />
+                Resume
+              </Button>
+            </div>
           </div>
 
           <div className="fade-in zoom-in-95 relative flex w-full animate-in items-center justify-center fill-mode-backwards delay-500 duration-700 ease-out lg:justify-end">
-            <SnehMascot size={320} />
+            {/* The mascot takes a fixed pixel size, so it is scaled down on small screens. */}
+            <div className="size-55 lg:size-80">
+              <div className="origin-top-left scale-[0.6875] lg:scale-100">
+                <SnehMascot size={320} />
+              </div>
+            </div>
           </div>
         </div>
 

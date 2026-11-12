@@ -1,5 +1,5 @@
 import { SectionHeading } from "@/components/web/section-heading";
-import { ArrowUpRightIcon, FolderGit2Icon } from "lucide-react";
+import { ArrowUpRightIcon, BriefcaseIcon } from "lucide-react";
 import { PROJECTS } from "@/data/projects";
 import { cn, formatPeriod } from "@/lib/utils";
 import type { Project } from "@/types/types";
@@ -50,13 +50,16 @@ function ProjectCard({
   const content = (
     <>
       <div className="min-w-0 flex-1 space-y-2">
-        <div className="flex items-center gap-2.5">
-          <span aria-hidden className="select-none font-mono text-xs text-muted-foreground/50">
+        <div className="flex items-start gap-2.5">
+          <span
+            aria-hidden
+            className="mt-0.5 select-none font-mono text-xs leading-5 text-muted-foreground/50"
+          >
             {(index + 1).toString().padStart(2, "0")}
           </span>
-          <h3 className="flex min-w-0 items-center gap-1.5 font-medium text-foreground">
-            <FolderGit2Icon aria-hidden className="size-4 shrink-0 text-muted-foreground" />
-            <span className="min-w-0 truncate">{project.title}</span>
+          <h3 className="flex min-w-0 items-start gap-1.5 font-medium text-foreground">
+            <BriefcaseIcon aria-hidden className="mt-1 size-4 shrink-0 text-muted-foreground" />
+            <span className="min-w-0 text-balance">{project.title}</span>
             {project.href && (
               <ArrowUpRightIcon
                 aria-hidden
@@ -66,10 +69,10 @@ function ProjectCard({
           </h3>
         </div>
 
-        <p className="text-xs leading-relaxed text-muted-foreground">{project.description}</p>
+        <p className="text-sm leading-relaxed text-muted-foreground">{project.description}</p>
 
         {project.highlights && project.highlights.length > 0 && (
-          <ul className="list-disc space-y-1.5 pl-4 text-xs leading-relaxed text-muted-foreground marker:text-muted-foreground/50">
+          <ul className="list-disc space-y-2 pl-4 text-sm leading-relaxed text-foreground/85 marker:text-muted-foreground/50">
             {project.highlights.map((highlight) => (
               <li key={highlight}>{highlight}</li>
             ))}
