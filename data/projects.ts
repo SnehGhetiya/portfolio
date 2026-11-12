@@ -12,7 +12,7 @@ export const PROJECTS: Project[] = [
   {
     id: "reachlink",
     title: "ReachLink (Healthcare Platform)",
-    period: { start: "2024" },
+    period: { start: "2024", end: "2024" },
     description:
       "Designed a HIPAA-compliant therapist onboarding ecosystem integrated with Cronofy for automated scheduling, reducing administrative booking time by 40%.",
     skills: ["HIPAA Compliance", "Cronofy", "Scheduling"],
