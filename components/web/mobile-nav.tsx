@@ -57,7 +57,14 @@ export function MobileNav() {
               </Button>
               <Button
                 className="w-full"
-                render={<a href={navActions.resume.href} download />}
+                render={
+                  <a
+                    href={navActions.resume.href}
+                    download
+                    data-track-event="resume_download"
+                    data-track-label="mobile_nav"
+                  />
+                }
                 nativeButton={false}
                 onClick={() => setOpen(false)}
               >

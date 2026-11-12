@@ -1,4 +1,5 @@
 import { ExperienceSection } from "@/components/web/experience-section";
+import { Footer } from "@/components/web/footer";
 import { Header } from "@/components/web/header";
 import { HeroSection } from "@/components/web/hero";
 import { ProjectSection } from "@/components/web/project-section";
@@ -25,6 +26,7 @@ export default function Home() {
         <ProjectSection />
         <SocialLinksSection />
       </main>
+      <Footer />
     </div>
   );
 }
