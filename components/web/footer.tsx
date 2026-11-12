@@ -8,8 +8,8 @@ export function Footer() {
   return (
     <footer className="mx-auto w-full max-w-4xl">
       <div className="mx-auto flex w-full max-w-3xl flex-col items-center justify-between gap-3 px-4 py-8 text-xs text-muted-foreground sm:flex-row md:px-6">
-        <p className="text-center text-balance sm:text-left">
-          © {YEAR} {USER.displayName}. Built with Next.js and Tailwind CSS.
+        <p>
+          © {YEAR} {USER.displayName}
         </p>
         <div className="flex items-center gap-4">
           <p className="hidden sm:block">
