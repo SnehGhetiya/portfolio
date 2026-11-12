@@ -11,6 +11,7 @@
 import { Dialog } from "@base-ui/react/dialog";
 import {
   BriefcaseIcon,
+  CalendarIcon,
   CopyIcon,
   CornerDownLeftIcon,
   FileDownIcon,
@@ -25,7 +26,9 @@ import {
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { GithubMarkIcon, LinkedinMarkIcon } from "@/components/web/social-icons";
+import { BOOKING_DURATION_LABEL } from "@/data/booking";
 import { RESUME_HREF } from "@/data/resume";
+import { openBooking } from "@/lib/booking";
 import { SOCIAL_LINKS } from "@/data/social-links";
 import { USER } from "@/data/user";
 import { useTheme } from "@/hooks/use-theme";
@@ -145,6 +148,14 @@ export function CommandMenu() {
           void navigator.clipboard?.writeText(USER.email);
           trackEvent({ name: "copy_email" });
         },
+      },
+      {
+        id: "book-call",
+        group: "Actions",
+        label: `Book a ${BOOKING_DURATION_LABEL} call`,
+        keywords: "meeting schedule calendar cal.com",
+        icon: <CalendarIcon />,
+        run: () => void openBooking("command_menu"),
       },
       {
         id: "resume",

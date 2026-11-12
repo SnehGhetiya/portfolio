@@ -3,6 +3,8 @@ import { MailIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SOCIAL_LINKS } from "@/data/social-links";
 import { USER } from "@/data/user";
+import { BOOKING_DURATION_LABEL } from "@/data/booking";
+import { BookCallButton } from "./book-call-button";
 import { CopyEmailButton } from "./copy-email-button";
 import type { SocialLinkName } from "@/types/types";
 import { DecorIcon } from "./decor-icon";
@@ -29,8 +31,11 @@ export function SocialLinksSection() {
 
         <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-5 px-4 py-10 text-center md:px-6 md:py-12">
           <p className="max-w-md text-sm leading-relaxed text-muted-foreground text-pretty">
-            Have a role, a project or a question about something I&apos;ve built? My inbox is open.
+            Have a role, a project or a question about something I&apos;ve built? Grab a{" "}
+            {BOOKING_DURATION_LABEL} slot on my calendar, or drop me an email.
           </p>
+
+          <BookCallButton source="contact" size="lg" />
 
           <div className="flex items-center gap-1 rounded-lg border border-border bg-muted/40 py-1 pr-1 pl-3">
             <a
